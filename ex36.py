@@ -52,11 +52,64 @@ def candy_room():
             print("You have to type a number!")
 
 def dino_room():
+
+    global Candy
+    global Treasure_key
+
+    sleeping_dino = False
+
     print("\nYou are in a room with an angry, giant dinosaur!")
     print("Fortunately, until you stay still, it cannot see you.")
     print("In one of its little arm, it grabs a little key.")
     print("There is a door at North and a door at East.")
 
+    print("\nWhat do you want to do?")
+    
+    while True:
+        print("1. North.")
+        print("2. East.")
+        if Treasure_key == False:
+            print("3. Grab the dinosaur's key.")
+        if Candy == True:
+            print("4. Launch the candy to the dinosaur!")
+
+        choice = int(input("> "))
+
+        try:
+            if choice == 1:
+                if sleeping_dino == False:
+                    die("The dinosaur eats you like a sandwich!")
+                else:
+                    start_room()
+
+            elif choice == 2:
+                if sleeping_dino == False:
+                    die("The dinosaur eats you like a sandwich!")
+                else:
+                    candy_room()
+
+            elif choice == 3 and Treasure_key == False:
+                if sleeping_dino == False:
+                    die("The dinosaur eats you like a sandwich!")
+                else:
+                    Treasure_key = True
+                    print("You took the small key from the dinosaur!")
+
+            elif choice == 4 and Candy == True:
+                Candy = False
+                print("The dinosaur seems to like your candy!")
+                print("...")
+                print("...")
+                print("The dinosaur finish the candy.")
+                print("...")
+                print("...")
+                print("And now it fall asleep! Pfeuuu!")
+                sleeping_dino = True
+
+            else:
+                print("You have to put a number among the listed choices!")
+        except ValueError:
+            print("You must type a number!!")
 
 def treasure_room():
     print("You are in the treasure room.")
