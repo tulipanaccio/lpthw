@@ -112,7 +112,45 @@ def dino_room():
             print("You must type a number!!")
 
 def treasure_room():
-    print("You are in the treasure room.")
+
+    global Treasure_key
+
+    print("\nYou are in a room with a treasure!")
+    print("Maybe you can become rich!!")
+
+    while True:
+
+        print("\nWhat do you want to do?")
+
+        print("1. Exit from the room.")
+        print("2. Open the treasure.")
+        print("3. Take the treasure with you.")
+
+        try:
+            choice = int(input("> "))
+        
+            if choice == 1:
+                start_room()
+
+            elif choice == 2:
+                if Treasure_key == False:
+                    print("The treasure is locked...")
+
+                else:
+                    print("CONGRATULATION!!!!!")
+                    print("Now you are rich!")
+
+                    print("\n\nYou Won!\n\n")
+                    exit(0)
+
+            elif choice == 3:
+                die("The treasure is too heavy and you die below its weight.")
+
+            else:
+                print("Please choose a value among the listed ones.")
+
+        except ValueError:
+            print("You have to type a number!")
 
 def key_room():
 
